@@ -1,0 +1,22 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "cobxo3bot@gmail.com",
+    "longName": "Rotated text",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "Rotated text",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "5936209b-a928-4e81-97de-f2c4b10fe04d",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
