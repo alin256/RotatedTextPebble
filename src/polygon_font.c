@@ -42,12 +42,19 @@ void draw_text_on_an_arc(GContext * ctx, GPoint center, int32_t rad, int32_t sta
   int16_t text_len = strlen(text)/sizeof(text[0]);
   int32_t da = (end_angle - start_angle)/text_len;
   for (int32_t i = 0; i<text_len; i++){
+    if (text[i]==' '){
+      continue;
+    }
+
     int32_t angle = start_angle + i*da;
-    GPoint dist = GPoint(center.x+sin_lookup(angle)*rad/TRIG_MAX_RATIO,center.y-cos_lookup(angle)*rad/TRIG_MAX_RATIO);
-    GPath *path = gpath_create(&letter_polygons[text[i]- 'A']);
-    gpath_move_to(path, dist);
-    gpath_rotate_to(path, angle);
-    gpath_draw_outline_open(ctx, path);
+    
+    if (text[i]>='A' && text[i]<='C'){
+      GPoint dist = GPoint(center.x+sin_lookup(angle)*rad/TRIG_MAX_RATIO,center.y-cos_lookup(angle)*rad/TRIG_MAX_RATIO);
+      GPath *path = gpath_create(&letter_polygons[text[i]- 'A']);
+      gpath_move_to(path, dist);
+      gpath_rotate_to(path, angle);
+      gpath_draw_outline_open(ctx, path);
+    }
   }
 
 }
