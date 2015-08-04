@@ -48,7 +48,8 @@ static void canvas_update_proc(Layer *this_layer, GContext *ctx) {
   draw_text_on_a_line(ctx, GPoint(60, 60), GPoint(100,100), TRIG_MAX_ANGLE/8, "ABCABBB");
   
   //draw_text_on_an_arc(ctx, center, 50, 0, TRIG_MAX_ANGLE-1, "BAAAAACBBBBBBAAAAACBBBBB");
-  draw_text_on_an_arc(ctx, center, 61, 0, TRIG_MAX_ANGLE-1, "BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB ");
+  //draw_text_on_an_arc(ctx, center, 61, 0, TRIG_MAX_ANGLE-1, "BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB ");
+  draw_text_on_arc_around(ctx, center, 61, 0, "ABABABAB");
   graphics_context_set_stroke_color(ctx, GColorDarkGray);
   
   draw_text_on_an_arc(ctx, center, 72, 0, TRIG_MAX_ANGLE-1, "BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB BAAAAACBB ");

@@ -1,7 +1,8 @@
 #include <pebble.h>
 #include "polygon_font.h"
-
-
+  
+static int32_t RADIAN_TO_ANGLE = (int)(TRIG_MAX_ANGLE/3.14159265/2);
+static const uint16_t CHAR_WIDTH = 7;
 static const int16_t FONT_MID = 3;
 static GPathInfo letter_polygons[3] = 
 {//A
@@ -38,6 +39,8 @@ void draw_text_on_a_line(GContext * ctx, GPoint start, GPoint end, int32_t angle
   return;
 }
 
+
+
 void draw_text_on_an_arc(GContext * ctx, GPoint center, int32_t rad, int32_t start_angle, int32_t end_angle, const char *text){
   int16_t text_len = strlen(text)/sizeof(text[0]);
   int32_t da = (end_angle - start_angle)/text_len;
@@ -57,4 +60,13 @@ void draw_text_on_an_arc(GContext * ctx, GPoint center, int32_t rad, int32_t sta
     }
   }
 
+}
+
+
+void draw_text_on_arc_around(GContext * ctx, GPoint center, int32_t rad, int32_t angle, const char *text){
+  uint16_t text_len = strlen(text);
+  uint32_t linear_len = text_len*CHAR_WIDTH;
+  uint32_t angle_len = linear_len*RADIAN_TO_ANGLE/rad;
+  draw_text_on_an_arc(ctx, center, rad, angle -angle_len/2, angle+angle_len/2, text);
+  // linearlen/2/pi
 }
